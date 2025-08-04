@@ -594,6 +594,7 @@
         width: 100%;
         position: relative;
         z-index: 2;
+        padding: 0px 50px 0px 50px;
       }
 
       .service-card {
@@ -638,6 +639,7 @@
         width: 100%;
         position: relative;
         z-index: 2;
+        padding: 0px 50px 0px 50px;
       }
 
       .product-card {
@@ -2289,9 +2291,13 @@
 
     <footer class="footer">
       <p>
-        &copy; 2025 Sathsara Copier Tech. All rights reserved. | Premium
-        Photocopier Solutions in Sri Lanka
+        &copy; <span id="currentYear"></span> Sathsara Copier Tech. All rights
+        reserved. | Premium Photocopier Solutions in Sri Lanka
       </p>
+      <script>
+        document.getElementById("currentYear").textContent =
+          new Date().getFullYear();
+      </script>
     </footer>
 
     <script>
