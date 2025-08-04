@@ -436,20 +436,34 @@
         }
       }
 
+      /* Updated Navbar Design */
       .navbar {
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
+        background: linear-gradient(
+          135deg,
+          rgba(15, 12, 41, 0.95) 0%,
+          rgba(36, 36, 62, 0.95) 50%,
+          rgba(49, 56, 98, 0.95) 100%
+        );
+        backdrop-filter: blur(20px);
         z-index: 1000;
-        padding: 1rem 2rem;
+        padding: 1rem 0;
         transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       }
 
       .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(
+          135deg,
+          rgba(15, 12, 41, 0.98) 0%,
+          rgba(36, 36, 62, 0.98) 50%,
+          rgba(49, 56, 98, 0.98) 100%
+        );
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border-bottom: 1px solid rgba(255, 107, 53, 0.3);
       }
 
       .nav-container {
@@ -457,31 +471,86 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        max-width: 1200px;
         padding: 0 2rem;
         margin: 0 auto;
       }
 
+      /* Updated Logo Styling */
       .logo {
         font-size: 1.8rem;
-        font-weight: bold;
-        color: #667eea;
+        font-weight: 800;
+        background: linear-gradient(
+          135deg,
+          #ff6b35 0%,
+          #ffd23f 50%,
+          #f7931e 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+        transition: all 0.3s ease;
+        cursor: pointer;
       }
 
+      .logo:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.1);
+      }
+
+      /* Updated Navigation Links */
       .nav-links {
         display: flex;
         list-style: none;
-        gap: 2rem;
+        gap: 2.5rem;
+      }
+
+      .nav-links li {
+        position: relative;
       }
 
       .nav-links a {
         text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        transition: color 0.3s ease;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, #ff6b35, #ffd23f);
+        opacity: 0;
+        border-radius: 25px;
+        transition: opacity 0.3s ease;
+        z-index: -1;
       }
 
       .nav-links a:hover {
-        color: #667eea;
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+      }
+
+      .nav-links a:hover::before {
+        opacity: 1;
+      }
+
+      /* Active link indicator */
+      .nav-links a.active {
+        background: rgba(255, 107, 53, 0.2);
+        color: #ffd23f;
+        border: 1px solid rgba(255, 107, 53, 0.3);
       }
 
       .section {
@@ -922,7 +991,7 @@
       <div class="nav-container">
         <div class="logo">Sathsara Copier Tech</div>
         <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
+          <li><a href="#home" class="active">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#products">Products</a></li>
           <li><a href="#about">About</a></li>
@@ -1586,6 +1655,28 @@
               behavior: "smooth",
               block: "start",
             });
+          }
+        });
+      });
+
+      // Active link highlighting
+      window.addEventListener("scroll", function () {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
           }
         });
       });
