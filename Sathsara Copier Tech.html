@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sathsara Copier Tech - Premium Photocopier Solutions</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #0f0c29 0%,
+          #24243e 50%,
+          #313862 100%
+        );
+        width: 100%;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 25% 25%,
+            #ff6b35 0%,
+            transparent 50%
+          ),
+          radial-gradient(circle at 75% 75%, #f7931e 0%, transparent 50%),
+          radial-gradient(circle at 50% 50%, #ffd23f 0%, transparent 70%);
+        opacity: 0.1;
+        animation: rotateGradient 20s linear infinite;
+        clip-path: polygon(
+          0 10%,
+          5% 0,
+          95% 0,
+          100% 10%,
+          100% 90%,
+          95% 100%,
+          5% 100%,
+          0 90%
+        );
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.04)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.06)"/><circle cx="90" cy="30" r="0.5" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+        animation: drift 30s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes rotateGradient {
+        0% {
+          transform: rotate(0deg) scale(1);
+        }
+        50% {
+          transform: rotate(180deg) scale(1.1);
+        }
+        100% {
+          transform: rotate(360deg) scale(1);
+        }
+      }
+
+      @keyframes drift {
+        0% {
+          transform: translate(-50%, -50%);
+        }
+        100% {
+          transform: translate(-48%, -52%);
+        }
+      }
+
+      .hero-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        width: 100%;
+        padding: 0;
+        z-index: 5;
+        position: relative;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        animation: slideInLeft 1s ease-out;
+        padding: 0 2rem;
+      }
+
+      .hero-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        animation: slideInRight 1s ease-out;
+        padding: 0 2rem;
+      }
+
+      .hero-badge {
+        width: 350px;
+        display: inline-block;
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        animation: slideInLeft 1s ease-out 0.2s both;
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+      }
+
+      .hero h1 {
+        font-size: 4.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #ffd23f 50%,
+          #ff6b35 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.1;
+        animation: slideInLeft 1s ease-out 0.3s both;
+      }
+
+      .hero-subtitle {
+        font-size: 1.3rem;
+        color: #a0a4b8;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        animation: slideInLeft 1s ease-out 0.4s both;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        animation: slideInLeft 1s ease-out 0.5s both;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, #ffd23f, #ff6b35);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: #8a8da6;
+        margin-top: 0.2rem;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        animation: slideInLeft 1s ease-out 0.6s both;
+      }
+
+      .btn-primary {
+        background: linear-gradient(45deg, #ff6b35, #f7931e);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(255, 107, 53, 0.6);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 1rem 2rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.4);
+        transform: translateY(-3px);
+      }
+
+      .hero-visual-content {
+        position: relative;
+        width: 500px;
+        height: 400px;
+      }
+
+      .visual-card {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .visual-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      }
+
+      .card-1 {
+        top: 0;
+        left: 0;
+        width: 200px;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .card-2 {
+        top: 100px;
+        right: 0;
+        width: 220px;
+        animation: float 6s ease-in-out infinite 2s;
+      }
+
+      .card-3 {
+        bottom: 0;
+        left: 50px;
+        width: 180px;
+        animation: float 6s ease-in-out infinite 4s;
+      }
+
+      .card-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #ff6b35, #ffd23f);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .card-title {
+        color: white;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-text {
+        color: #a0a4b8;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(1deg);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .floating-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          rgba(255, 107, 53, 0.1),
+          rgba(255, 210, 63, 0.1)
+        );
+        animation: floatShapes 15s linear infinite;
+      }
+
+      .shape:nth-child(1) {
+        width: 100px;
+        height: 100px;
+        top: 20%;
+        left: -50px;
+        animation-delay: 0s;
+      }
+
+      .shape:nth-child(2) {
+        width: 60px;
+        height: 60px;
+        top: 60%;
+        left: -30px;
+        animation-delay: 5s;
+      }
+
+      .shape:nth-child(3) {
+        width: 80px;
+        height: 80px;
+        top: 80%;
+        left: -40px;
+        animation-delay: 10s;
+      }
+
+      @keyframes floatShapes {
+        0% {
+          transform: translateX(-100px) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(calc(100vw + 100px)) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .section {
+          padding: 3rem 0;
+        }
+
+        .services-grid,
+        .products-grid,
+        .team-grid,
+        .contact-grid {
+          padding: 0 1rem;
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 1rem 2rem;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 2rem;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #667eea;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #667eea;
+      }
+
+      .section {
+        padding: 5rem 0;
+        width: 100%;
+        position: relative;
+      }
+
+      .section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: inherit;
+        clip-path: polygon(0 0, 5% 100%, 95% 100%, 100% 0);
+        z-index: 1;
+      }
+
+      .section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: inherit;
+        clip-path: polygon(0 100%, 5% 0, 95% 0, 100% 100%);
+        z-index: 1;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #333;
+        position: relative;
+        z-index: 2;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 2px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+        width: 100%;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .service-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+      }
+
+      .service-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+        width: 100%;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .product-images {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+      }
+
+      .product-main-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .product-main-image:hover {
+        transform: scale(1.05);
+      }
+
+      .product-thumbnails {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+      }
+
+      .thumbnail {
+        width: 50px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 5px;
+        cursor: pointer;
+        opacity: 0.7;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .thumbnail:hover,
+      .thumbnail.active {
+        opacity: 1;
+        border-color: #667eea;
+        transform: scale(1.1);
+      }
+
+      .product-content {
+        padding: 1.5rem;
+      }
+
+      .product-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+      }
+
+      .product-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: #333;
+        flex: 1;
+      }
+
+      .product-price {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        margin-left: 1rem;
+      }
+
+      .product-specs {
+        margin: 1rem 0;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 10px;
+      }
+
+      .product-specs h4 {
+        color: #667eea;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .specs-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .specs-list li {
+        padding: 0.2rem 0;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .specs-list li::before {
+        content: "✓ ";
+        color: #667eea;
+        font-weight: bold;
+      }
+
+      .product-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .btn-contact {
+        flex: 1;
+        padding: 0.8rem;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .btn-contact:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-quote {
+        flex: 1;
+        padding: 0.8rem;
+        background: transparent;
+        color: #667eea;
+        border: 2px solid #667eea;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      .btn-quote:hover {
+        background: #667eea;
+        color: white;
+      }
+
+      .placeholder-image {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        flex-direction: column;
+      }
+
+      .placeholder-text {
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+        opacity: 0.8;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+        width: 100%;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .team-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .team-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .team-avatar {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .contact-section {
+        background: linear-gradient(135deg, #4a5eb5 0%, #6a3c8b 100%);
+        color: white;
+        width: 100%;
+        padding: 5rem 0;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+        width: 100%;
+        padding: 0 2rem;
+      }
+
+      .contact-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-3px);
+      }
+
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .floating-element {
+        position: absolute;
+        background: rgba(102, 126, 234, 0.1);
+        border-radius: 50%;
+        animation: floatAnimation 15s infinite ease-in-out;
+      }
+
+      .floating-element:nth-child(1) {
+        width: 100px;
+        height: 100px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-element:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 5s;
+      }
+
+      .floating-element:nth-child(3) {
+        width: 80px;
+        height: 80px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 10s;
+      }
+
+      @keyframes floatAnimation {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-30px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(20px) rotate(240deg);
+        }
+      }
+
+      .footer {
+        background: #1a1a1a;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="floating-elements">
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+      <div class="floating-element"></div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="logo">Sathsara Copier Tech</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">🏆 Sri Lanka's Trusted Copier Experts</div>
+          <h1>Sathsara Copier Tech</h1>
+          <div class="hero-subtitle">
+            Transform your office productivity with premium photocopier
+            solutions, expert technical services, and genuine spare parts -
+            backed by decades of experience and unmatched reliability.
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Happy Clients</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="#products" class="btn-primary"> 🖨️ View Products </a>
+            <a href="#contact" class="btn-secondary"> 📞 Get Free Quote </a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-visual-content">
+            <div class="visual-card card-1">
+              <div class="card-icon">🖨️</div>
+              <div class="card-title">Premium Machines</div>
+              <div class="card-text">
+                Latest photocopier technology from leading brands
+              </div>
+            </div>
+
+            <div class="visual-card card-2">
+              <div class="card-icon">🔧</div>
+              <div class="card-title">Expert Service</div>
+              <div class="card-text">
+                Professional repair and maintenance by certified technicians
+              </div>
+            </div>
+
+            <div class="visual-card card-3">
+              <div class="card-icon">⚙️</div>
+              <div class="card-title">Genuine Parts</div>
+              <div class="card-text">
+                Original spare parts for optimal performance
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🖨️</div>
+          <h3>Photocopy Machine Sales</h3>
+          <p>
+            Wide range of new and refurbished photocopier machines from leading
+            brands. Find the perfect solution for your office needs.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3>Expert Repair Services</h3>
+          <p>
+            Professional repair and maintenance services by our certified
+            technicians. Quick diagnosis and reliable solutions.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>Spare Parts Supply</h3>
+          <p>
+            Genuine spare parts and consumables for all major photocopier
+            brands. Quality parts for optimal performance.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛠️</div>
+          <h3>Maintenance Contracts</h3>
+          <p>
+            Comprehensive maintenance packages to keep your equipment running
+            smoothly. Preventive care for maximum uptime.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📞</div>
+          <h3>Technical Support</h3>
+          <p>
+            24/7 technical support and consultation. Our experts are always
+            ready to help with any technical issues.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚀</div>
+          <h3>Installation & Setup</h3>
+          <p>
+            Professional installation and setup services. Complete configuration
+            and user training included.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <h2 class="section-title">Our Products</h2>
+      <div class="products-grid">
+        <!-- Sample Product 1 - Replace with your actual machines -->
+        <div class="product-card">
+          <div class="product-images">
+            <!-- Main Image - Replace src with your actual image path -->
+            <img
+              src="path/to/your/main-image1.jpg"
+              alt="Canon ImageRunner 2425"
+              class="product-main-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="placeholder-image" style="display: none">
+              🖨️
+              <div class="placeholder-text">Add Main Image</div>
+            </div>
+
+            <!-- Thumbnail Images - Replace src with your actual image paths -->
+            <div class="product-thumbnails">
+              <img
+                src="path/to/your/thumb1-1.jpg"
+                alt="Thumbnail 1"
+                class="thumbnail active"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb1-2.jpg"
+                alt="Thumbnail 2"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb1-3.jpg"
+                alt="Thumbnail 3"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb1-4.jpg"
+                alt="Thumbnail 4"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb1-5.jpg"
+                alt="Thumbnail 5"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+            </div>
+          </div>
+
+          <div class="product-content">
+            <div class="product-header">
+              <h3>Canon ImageRunner 2425</h3>
+              <div class="product-price">LKR 450,000</div>
+            </div>
+
+            <div class="product-specs">
+              <h4>Key Features:</h4>
+              <ul class="specs-list">
+                <li>25 pages per minute printing speed</li>
+                <li>Automatic duplex printing</li>
+                <li>Network connectivity</li>
+                <li>50-sheet ADF</li>
+                <li>Energy efficient design</li>
+              </ul>
+            </div>
+
+            <div class="product-actions">
+              <a href="#contact" class="btn-contact">Contact Us</a>
+              <a href="#contact" class="btn-quote">Get Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Product 2 - Replace with your actual machines -->
+        <div class="product-card">
+          <div class="product-images">
+            <img
+              src="path/to/your/main-image2.jpg"
+              alt="Xerox WorkCentre 5855"
+              class="product-main-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="placeholder-image" style="display: none">
+              🏢
+              <div class="placeholder-text">Add Main Image</div>
+            </div>
+
+            <div class="product-thumbnails">
+              <img
+                src="path/to/your/thumb2-1.jpg"
+                alt="Thumbnail 1"
+                class="thumbnail active"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb2-2.jpg"
+                alt="Thumbnail 2"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb2-3.jpg"
+                alt="Thumbnail 3"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb2-4.jpg"
+                alt="Thumbnail 4"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb2-5.jpg"
+                alt="Thumbnail 5"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+            </div>
+          </div>
+
+          <div class="product-content">
+            <div class="product-header">
+              <h3>Xerox WorkCentre 5855</h3>
+              <div class="product-price">LKR 850,000</div>
+            </div>
+
+            <div class="product-specs">
+              <h4>Key Features:</h4>
+              <ul class="specs-list">
+                <li>55 pages per minute printing speed</li>
+                <li>High-volume capacity</li>
+                <li>Advanced security features</li>
+                <li>Mobile printing support</li>
+                <li>Large touchscreen display</li>
+              </ul>
+            </div>
+
+            <div class="product-actions">
+              <a href="#contact" class="btn-contact">Contact Us</a>
+              <a href="#contact" class="btn-quote">Get Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Product 3 - Replace with your actual machines -->
+        <div class="product-card">
+          <div class="product-images">
+            <img
+              src="path/to/your/main-image3.jpg"
+              alt="HP LaserJet Pro MFP M428"
+              class="product-main-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="placeholder-image" style="display: none">
+              🔄
+              <div class="placeholder-text">Add Main Image</div>
+            </div>
+
+            <div class="product-thumbnails">
+              <img
+                src="path/to/your/thumb3-1.jpg"
+                alt="Thumbnail 1"
+                class="thumbnail active"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb3-2.jpg"
+                alt="Thumbnail 2"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb3-3.jpg"
+                alt="Thumbnail 3"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb3-4.jpg"
+                alt="Thumbnail 4"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb3-5.jpg"
+                alt="Thumbnail 5"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+            </div>
+          </div>
+
+          <div class="product-content">
+            <div class="product-header">
+              <h3>HP LaserJet Pro MFP M428</h3>
+              <div class="product-price">LKR 180,000</div>
+            </div>
+
+            <div class="product-specs">
+              <h4>Key Features:</h4>
+              <ul class="specs-list">
+                <li>38 pages per minute printing speed</li>
+                <li>All-in-one functionality</li>
+                <li>Wireless connectivity</li>
+                <li>Compact desktop design</li>
+                <li>Automatic document feeder</li>
+              </ul>
+            </div>
+
+            <div class="product-actions">
+              <a href="#contact" class="btn-contact">Contact Us</a>
+              <a href="#contact" class="btn-quote">Get Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Product 4 - Spare Parts -->
+        <div class="product-card">
+          <div class="product-images">
+            <img
+              src="path/to/your/main-image4.jpg"
+              alt="Genuine Spare Parts"
+              class="product-main-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="placeholder-image" style="display: none">
+              ⚙️
+              <div class="placeholder-text">Add Main Image</div>
+            </div>
+
+            <div class="product-thumbnails">
+              <img
+                src="path/to/your/thumb4-1.jpg"
+                alt="Toner Cartridges"
+                class="thumbnail active"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb4-2.jpg"
+                alt="Drum Units"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb4-3.jpg"
+                alt="Fuser Units"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb4-4.jpg"
+                alt="Rollers"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb4-5.jpg"
+                alt="Maintenance Kits"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+            </div>
+          </div>
+
+          <div class="product-content">
+            <div class="product-header">
+              <h3>Genuine Spare Parts</h3>
+              <div class="product-price">From LKR 2,500</div>
+            </div>
+
+            <div class="product-specs">
+              <h4>Available Parts:</h4>
+              <ul class="specs-list">
+                <li>Original toner cartridges</li>
+                <li>Drum units and imaging kits</li>
+                <li>Fuser units and assemblies</li>
+                <li>Paper feed rollers</li>
+                <li>Maintenance and service kits</li>
+              </ul>
+            </div>
+
+            <div class="product-actions">
+              <a href="#contact" class="btn-contact">Contact Us</a>
+              <a href="#contact" class="btn-quote">Get Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Product 5 - Color Copiers -->
+        <div class="product-card">
+          <div class="product-images">
+            <img
+              src="path/to/your/main-image5.jpg"
+              alt="Ricoh MP C3004"
+              class="product-main-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="placeholder-image" style="display: none">
+              🎨
+              <div class="placeholder-text">Add Main Image</div>
+            </div>
+
+            <div class="product-thumbnails">
+              <img
+                src="path/to/your/thumb5-1.jpg"
+                alt="Thumbnail 1"
+                class="thumbnail active"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb5-2.jpg"
+                alt="Thumbnail 2"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb5-3.jpg"
+                alt="Thumbnail 3"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb5-4.jpg"
+                alt="Thumbnail 4"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb5-5.jpg"
+                alt="Thumbnail 5"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+            </div>
+          </div>
+
+          <div class="product-content">
+            <div class="product-header">
+              <h3>Ricoh MP C3004</h3>
+              <div class="product-price">LKR 650,000</div>
+            </div>
+
+            <div class="product-specs">
+              <h4>Key Features:</h4>
+              <ul class="specs-list">
+                <li>30 pages per minute color printing</li>
+                <li>Professional color quality</li>
+                <li>Advanced finishing options</li>
+                <li>Cloud connectivity</li>
+                <li>Environmental friendly design</li>
+              </ul>
+            </div>
+
+            <div class="product-actions">
+              <a href="#contact" class="btn-contact">Contact Us</a>
+              <a href="#contact" class="btn-quote">Get Quote</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Product 6 - Used/Refurbished -->
+        <div class="product-card">
+          <div class="product-images">
+            <img
+              src="path/to/your/main-image6.jpg"
+              alt="Refurbished Machines"
+              class="product-main-image"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="placeholder-image" style="display: none">
+              💼
+              <div class="placeholder-text">Add Main Image</div>
+            </div>
+
+            <div class="product-thumbnails">
+              <img
+                src="path/to/your/thumb6-1.jpg"
+                alt="Thumbnail 1"
+                class="thumbnail active"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb6-2.jpg"
+                alt="Thumbnail 2"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb6-3.jpg"
+                alt="Thumbnail 3"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb6-4.jpg"
+                alt="Thumbnail 4"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+              <img
+                src="path/to/your/thumb6-5.jpg"
+                alt="Thumbnail 5"
+                class="thumbnail"
+                onerror="this.style.display='none';"
+              />
+            </div>
+          </div>
+
+          <div class="product-content">
+            <div class="product-header">
+              <h3>Refurbished Machines</h3>
+              <div class="product-price">From LKR 85,000</div>
+            </div>
+
+            <div class="product-specs">
+              <h4>Why Choose Refurbished:</h4>
+              <ul class="specs-list">
+                <li>Cost-effective solution</li>
+                <li>Fully tested and certified</li>
+                <li>Warranty included</li>
+                <li>Professional refurbishment</li>
+                <li>Same performance standards</li>
+              </ul>
+            </div>
+
+            <div class="product-actions">
+              <a href="#contact" class="btn-contact">Contact Us</a>
+              <a href="#contact" class="btn-quote">Get Quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about-section">
+      <h2 class="section-title">Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">👨‍💼</div>
+          <h3>Mr. Sathsara (Senior)</h3>
+          <p><strong>Founder & Owner</strong></p>
+          <p>
+            With decades of experience in the photocopier industry, our founder
+            established Sathsara Copier Tech with a vision to provide reliable
+            and professional copier solutions.
+          </p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">👨‍💻</div>
+          <h3>Mr. Sathsara (Junior)</h3>
+          <p><strong>Operations Manager</strong></p>
+          <p>
+            Managing daily operations and customer relations, bringing fresh
+            ideas and modern approaches to enhance our service quality and
+            customer satisfaction.
+          </p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">🔧</div>
+          <h3>Expert Technician Team</h3>
+          <p><strong>Technical Specialists</strong></p>
+          <p>
+            Our certified technicians provide expert repair, maintenance, and
+            installation services with years of hands-on experience in
+            photocopier technology.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <h2 class="section-title" style="color: white">Get In Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📞</div>
+          <h3>Phone</h3>
+          <p>Call us for immediate assistance</p>
+          <p><strong>+94 XX XXX XXXX</strong></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p>Send us your inquiries</p>
+          <p><strong>info@sathsaracopiertech.lk</strong></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Location</h3>
+          <p>Visit our showroom</p>
+          <p><strong>Colombo, Sri Lanka</strong></p>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon">🕒</div>
+          <h3>Business Hours</h3>
+          <p>Monday - Saturday</p>
+          <p><strong>8:00 AM - 6:00 PM</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        &copy; 2025 Sathsara Copier Tech. All rights reserved. | Premium
+        Photocopier Solutions in Sri Lanka
+      </p>
+    </footer>
+
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards for animation
+      document
+        .querySelectorAll(
+          ".service-card, .product-card, .team-card, .contact-card"
+        )
+        .forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+          observer.observe(card);
+        });
+
+      // Image gallery functionality
+      function initImageGallery() {
+        document.querySelectorAll(".product-card").forEach((card) => {
+          const mainImage = card.querySelector(".product-main-image");
+          const placeholderDiv = card.querySelector(".placeholder-image");
+          const thumbnails = card.querySelectorAll(".thumbnail");
+
+          // Set up thumbnail clicks
+          thumbnails.forEach((thumbnail) => {
+            thumbnail.addEventListener("click", function () {
+              if (this.style.display !== "none") {
+                // Remove active class from all thumbnails
+                thumbnails.forEach((t) => t.classList.remove("active"));
+                // Add active class to clicked thumbnail
+                this.classList.add("active");
+
+                // Update main image
+                mainImage.src = this.src;
+                mainImage.alt = this.alt;
+
+                // Show main image and hide placeholder if needed
+                mainImage.style.display = "block";
+                if (placeholderDiv) {
+                  placeholderDiv.style.display = "none";
+                }
+              }
+            });
+          });
+
+          // Handle main image load error
+          if (mainImage) {
+            mainImage.addEventListener("error", function () {
+              this.style.display = "none";
+              if (placeholderDiv) {
+                placeholderDiv.style.display = "flex";
+              }
+            });
+          }
+        });
+      }
+
+      // Initialize image gallery when DOM is loaded
+      document.addEventListener("DOMContentLoaded", initImageGallery);
+
+      // Parallax effect for floating elements
+      window.addEventListener("scroll", function () {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll(".floating-element");
+
+        parallaxElements.forEach((element, index) => {
+          const speed = 0.5 + index * 0.1;
+          element.style.transform = `translateY(${scrolled * speed}px) rotate(${
+            scrolled * 0.1
+          }deg)`;
+        });
+      });
+    </script>
+  </body>
+</html>
