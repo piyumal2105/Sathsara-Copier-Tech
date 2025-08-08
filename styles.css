@@ -1341,7 +1341,7 @@ body {
     margin-bottom: 2rem;
   }
   .product-images {
-    height: 220px;
+    height: auto;
   }
   .thumbnail {
     width: 35px;
@@ -1548,7 +1548,7 @@ body {
     margin-bottom: 2rem;
   }
   .product-images {
-    height: 200px;
+    height: auto;
   }
   .thumbnail {
     width: 30px;
