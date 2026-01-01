@@ -630,12 +630,6 @@ body {
 }
 
 .product-images {
-  /* position: relative;
-  height: 450px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
   position: relative; /* Required for absolute positioning of badge */
   overflow: hidden;
   border-radius: 20px 20px 0 0; /* Matches card top corners */
