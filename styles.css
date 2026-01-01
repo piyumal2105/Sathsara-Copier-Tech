@@ -630,12 +630,15 @@ body {
 }
 
 .product-images {
-  position: relative;
+  /* position: relative;
   height: 450px;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  position: relative; /* Required for absolute positioning of badge */
+  overflow: hidden;
+  border-radius: 20px 20px 0 0; /* Matches card top corners */
 }
 
 .product-main-image {
@@ -708,6 +711,54 @@ body {
   font-weight: bold;
   font-size: 1rem;
   white-space: nowrap;
+}
+
+.product-price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.warranty-badge {
+  position: absolute;
+  top: 30px;
+  right: 15px;
+  z-index: 10;
+  background: linear-gradient(135deg, #f59e0b, #d97706, #b45309);
+  color: white;
+  padding: 0.45rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.5);
+  transform: rotate(8deg);
+  animation: gentlePulse 3s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.5);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.08);
+    box-shadow: 0 8px 25px rgba(217, 119, 6, 0.7);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.5);
+  }
 }
 
 .product-specs {
@@ -878,7 +929,7 @@ body {
 
 .contact-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 1rem; /* Reduced padding to allow more width */
+  padding: 1rem;
   border-radius: 15px;
   text-align: center;
   transition: all 0.3s ease;
@@ -1206,10 +1257,13 @@ body {
     gap: 1.5rem;
   }
   .product-images {
-    height: auto;
+    /* height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    position: relative; /* Important: enables absolute positioning of child */
+    overflow: hidden;
+    border-radius: 12px 12px 0 0; /* Optional: match card rounding */
   }
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
