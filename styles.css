@@ -1853,9 +1853,8 @@ body {
   position: fixed;
   width: 60px;
   height: 60px;
-  bottom: 50px;
-  right: 10%;
-  transform: translateX(50%);
+  bottom: 30px;
+  right: 30px;
   z-index: 9999;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -1879,8 +1878,8 @@ body {
 }
 
 .whatsapp-link:hover {
-  width: 200px;
-  border-radius: 30px;
+  /* width: 200px; */
+  /* border-radius: 30px; */
   justify-content: flex-start;
   padding-left: 15px;
   transform: translateY(-3px);
@@ -1961,8 +1960,7 @@ body {
 @media (max-width: 768px) {
   .whatsapp-float {
     bottom: 20px;
-    right: 50%;
-    transform: translateX(50%);
+    right: 20px;
     width: 55px;
     height: 55px;
   }
@@ -1980,6 +1978,28 @@ body {
     border-radius: 27px;
     justify-content: flex-start;
     padding-left: 12px;
+  }
+
+  .whatsapp-link:hover {
+    width: 170px;
+    border-radius: 27px;
+    justify-content: flex-start;
+    padding-left: 12px;
+  }
+
+  .chatbot-toggle {
+    bottom: 20px;
+    right: 90px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .chatbot-container {
+    bottom: 90px;
+    right: 20px;
+    width: calc(100% - 40px);
+    max-width: 380px;
+    height: 500px;
   }
 
   .whatsapp-text {
@@ -2011,8 +2031,7 @@ body {
 @media (max-width: 480px) {
   .whatsapp-float {
     bottom: 15px;
-    right: 50%;
-    transform: translateX(50%);
+    right: 15px;
     width: 50px;
     height: 50px;
   }
@@ -2020,9 +2039,25 @@ body {
   .whatsapp-link {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
-    padding: 0;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .chatbot-toggle {
+    bottom: 15px;
+    right: 80px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .chatbot-toggle svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .chatbot-container {
+    bottom: 75px;
+    right: 10px;
+    width: calc(100% - 20px);
+    height: 450px;
   }
 
   .whatsapp-link:hover {
@@ -2055,5 +2090,851 @@ body {
 
   .whatsapp-link:hover .whatsapp-icon {
     margin-right: 2px;
+  }
+}
+
+/* Chatbot Styles */
+.chatbot-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 110px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 9998;
+  transition: all 0.3s ease;
+}
+
+.chatbot-toggle:hover {
+  justify-content: flex-start;
+  padding-left: 15px;
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 10px 35px rgba(102, 126, 234, 0.6);
+}
+
+.chatbot-toggle svg {
+  width: 28px;
+  height: 28px;
+}
+
+.chatbot-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff6b35;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  animation: chatbotPulse 2s infinite;
+}
+
+@keyframes chatbotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.chatbot-container {
+  position: fixed;
+  bottom: 130px;
+  right: 10%;
+  transform: translateX(50%);
+  width: 380px;
+  height: 550px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+.chatbot-container.active {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateX(50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(50%) translateY(0);
+  }
+}
+
+.chatbot-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header-content {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.chatbot-avatar {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.chatbot-title h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.chatbot-status {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.chatbot-status::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #4ade80;
+  border-radius: 50%;
+  display: inline-block;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.chatbot-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 3px;
+}
+
+.bot-message,
+.user-message {
+  display: flex;
+  gap: 0.8rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.user-message .message-avatar {
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+}
+
+.message-content {
+  max-width: 85%;
+  width: fit-content;
+}
+
+.message-content p {
+  background: white;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  margin: 0 0 0.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  line-height: 1.5;
+  font-size: 0.9rem;
+  word-wrap: break-word;
+}
+
+.user-message .message-content p {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.quick-replies {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.quick-reply {
+  background: white;
+  border: 2px solid #667eea;
+  color: #667eea;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.quick-reply:hover {
+  background: #667eea;
+  color: white;
+  transform: translateX(5px);
+}
+
+.product-card-chat {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.product-card-chat h4 {
+  color: #667eea;
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.product-card-chat ul {
+  margin: 0.5rem 0;
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.product-card-chat .price {
+  color: #ff6b35;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.typing-indicator .message-content {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: #667eea;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+}
+
+.chatbot-input-area {
+  display: flex;
+  gap: 0.8rem;
+  padding: 1rem;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+#chatbot-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+#chatbot-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#chatbot-send {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+#chatbot-send:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+#chatbot-send:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Responsiveness for Chatbot */
+@media (max-width: 768px) {
+  .chatbot-toggle {
+    bottom: 100px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .chatbot-toggle:hover {
+    transform: translateX(50%) translateY(-3px);
+  }
+
+  .chatbot-container {
+    bottom: 100px;
+    right: 50%;
+    transform: translateX(50%);
+    width: calc(100% - 2rem);
+    max-width: 380px;
+    height: 500px;
+  }
+
+  .chatbot-container.active {
+    animation: slideUp 0.3s ease;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateX(50%) translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(50%) translateY(0);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .chatbot-toggle {
+    bottom: 85px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .chatbot-toggle svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .chatbot-container {
+    bottom: 85px;
+    width: calc(100% - 1rem);
+    height: 450px;
+  }
+
+  .message-content {
+    max-width: 80%;
+  }
+
+  .chatbot-header {
+    padding: 1rem;
+  }
+
+  .chatbot-messages {
+    padding: 1rem;
+  }
+}
+
+/* Comparison Table Styles */
+.comparison-table {
+  background: white;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.comparison-row {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 50px;
+}
+
+.comparison-row:last-child {
+  border-bottom: none;
+}
+
+.comparison-row:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.comparison-label {
+  min-width: 120px;
+  max-width: 120px;
+  padding: 1rem 0.8rem;
+  font-weight: 600;
+  color: #667eea;
+  border-right: 2px solid #e5e7eb;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.comparison-value {
+  flex: 1;
+  min-width: 150px;
+  padding: 1rem 0.8rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-right: 1px solid #e5e7eb;
+}
+
+.comparison-value:last-child {
+  border-right: none;
+}
+
+/* For 2 machines comparison */
+.comparison-row:has(.comparison-value:nth-child(3):last-child)
+  .comparison-value {
+  min-width: 180px;
+}
+
+/* For 3 machines comparison */
+.comparison-row:has(.comparison-value:nth-child(4):last-child)
+  .comparison-value {
+  min-width: 130px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .comparison-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .comparison-label {
+    min-width: 90px;
+    max-width: 90px;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .comparison-value {
+    min-width: 120px;
+    padding: 0.8rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .comparison-row:has(.comparison-value:nth-child(3):last-child)
+    .comparison-value {
+    min-width: 140px;
+  }
+
+  .comparison-row:has(.comparison-value:nth-child(4):last-child)
+    .comparison-value {
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-table {
+    font-size: 0.75rem;
+  }
+
+  .comparison-label {
+    min-width: 80px;
+    max-width: 80px;
+    padding: 0.7rem 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .comparison-value {
+    min-width: 100px;
+    padding: 0.7rem 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .comparison-row:has(.comparison-value:nth-child(3):last-child)
+    .comparison-value {
+    min-width: 120px;
+  }
+
+  .comparison-row:has(.comparison-value:nth-child(4):last-child)
+    .comparison-value {
+    min-width: 95px;
+  }
+}
+
+/* Scrollbar styling for comparison table */
+.comparison-table::-webkit-scrollbar {
+  height: 6px;
+}
+
+.comparison-table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 0 0 12px 12px;
+}
+
+.comparison-table::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 3px;
+}
+
+.comparison-table::-webkit-scrollbar-thumb:hover {
+  background: #5a67d8;
+}
+
+/* Card-Based Comparison Styles */
+.comparison-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.compare-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.compare-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
+}
+
+.compare-card-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.compare-card-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.badge-speed {
+  background: rgba(255, 215, 0, 0.3);
+}
+
+.badge-price {
+  background: rgba(76, 175, 80, 0.3);
+}
+
+.compare-details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.compare-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.6rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.compare-item:hover {
+  background: #e9ecef;
+  transform: translateX(3px);
+}
+
+.compare-item-full {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.compare-icon {
+  font-size: 1.3rem;
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compare-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.compare-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.compare-value {
+  font-size: 0.9rem;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+.feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.3rem;
+}
+
+.feature-tag {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  background: white;
+  border: 1px solid #667eea;
+  color: #667eea;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.comparison-analysis {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.comparison-analysis h4 {
+  color: #667eea;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+}
+
+.analysis-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.analysis-item {
+  background: white;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.analysis-item p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #374151;
+}
+
+.analysis-item strong {
+  color: #667eea;
+}
+
+.recommendation-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+}
+
+.recommendation-box h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: white;
+}
+
+.recommendation-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.recommendation-box strong {
+  color: #ffd23f;
+  font-weight: 700;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .compare-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .compare-card-header h4 {
+    font-size: 1rem;
+  }
+
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .compare-icon {
+    font-size: 1.1rem;
+    min-width: 25px;
+  }
+
+  .compare-label {
+    font-size: 0.7rem;
+  }
+
+  .compare-value {
+    font-size: 0.85rem;
+  }
+
+  .feature-tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .analysis-item p {
+    font-size: 0.8rem;
+  }
+
+  .recommendation-box p {
+    font-size: 0.85rem;
   }
 }

@@ -824,10 +824,96 @@
             />
           </svg>
         </div>
-        <span class="whatsapp-text">Chat with us</span>
+        <!-- <span class="whatsapp-text">Chat with us</span> -->
       </a>
       <div class="whatsapp-pulse"></div>
     </div>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-container" id="chatbot-container">
+      <div class="chatbot-header">
+        <div class="chatbot-header-content">
+          <div class="chatbot-avatar">🤖</div>
+          <div class="chatbot-title">
+            <h3>Sathsara Assistant</h3>
+            <span class="chatbot-status">Online</span>
+          </div>
+        </div>
+        <button class="chatbot-close" id="chatbot-close">✕</button>
+      </div>
+
+      <div class="chatbot-messages" id="chatbot-messages">
+        <div class="bot-message">
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">
+            <p>
+              Hello! I'm here to help you learn about our photocopier products.
+              What would you like to know?
+            </p>
+            <div class="quick-replies">
+              <button class="quick-reply" data-query="products">
+                View All Products
+              </button>
+              <button class="quick-reply" data-query="compare">
+                Compare Models
+              </button>
+              <button class="quick-reply" data-query="prices">
+                Price Range
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chatbot-input-area">
+        <input
+          type="text"
+          id="chatbot-input"
+          placeholder="Ask about our products..."
+          autocomplete="off"
+        />
+        <button
+          id="chatbot-send"
+          title="Send message"
+          aria-label="Send message"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+          </svg>
+          <span
+            class="sr-only"
+            style="
+              position: absolute;
+              width: 1px;
+              height: 1px;
+              padding: 0;
+              margin: -1px;
+              overflow: hidden;
+              clip: rect(0, 0, 0, 0);
+              white-space: nowrap;
+              border: 0;
+            "
+            >Send message</span
+          >
+        </button>
+      </div>
+    </div>
+
+    <button class="chatbot-toggle" id="chatbot-toggle">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"
+        />
+      </svg>
+      <span class="chatbot-badge">1</span>
+    </button>
 
     <script src="script.js"></script>
   </body>
